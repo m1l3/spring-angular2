@@ -19,11 +19,11 @@ export class ReservationService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let option = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.baseUrl + this.roomReservationUrl, body, option)
+    return this.http.post(`${this.baseUrl} ${this.roomReservationUrl}`, body, option)
   }
 
   getAll(currentCheckInVal: string, currentCheckOutVal: string): Observable<Room[]> {
-    return this.http.get(this.baseUrl + this.roomReservationUrl +"?checkin=" + currentCheckInVal + "&checkout=" + currentCheckOutVal)
+    return this.http.get(`${this.baseUrl} ${this.roomReservationUrl} "?checkin=" ${currentCheckInVal} "&checkout=" ${currentCheckOutVal}`)
       .map(this.mapRoom);
   }
 
