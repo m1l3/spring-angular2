@@ -9,7 +9,8 @@ export class ReservationService {
   private baseUrl: string;
   private readonly roomReservationUrl = "/room/reservation/v1";
   request: ReserveRoomRequest;
-  constructor(private http: Http, @Inject('API_URL') apiUrl: string) {
+
+  constructor(private http: Http, @Inject('API_URL') private apiUrl: string) {
     this.baseUrl = apiUrl;
   }
 
