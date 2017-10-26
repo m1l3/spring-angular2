@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { HttpModule  } from '@angular/http';
-import {RouterModule, Routes} from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -33,7 +33,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    ReservationService,
+    { provide: 'API_URL', useValue: 'http://localhost:8080' },
+    ReservationService
   ],
   bootstrap: [HomeComponent]
 })
