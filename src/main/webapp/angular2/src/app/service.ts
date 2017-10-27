@@ -6,12 +6,10 @@ import { Room } from "app/room.interface";
 
 @Injectable()
 export class ReservationService {
-  private baseUrl: string;
   private readonly roomReservationUrl = "/room/reservation/v1";
   request: ReserveRoomRequest;
 
   constructor(private http: Http, @Inject('API_URL') private apiUrl: string) {
-    this.baseUrl = apiUrl;
   }
 
   createReservation(body: ReserveRoomRequest) {
@@ -19,11 +17,11 @@ export class ReservationService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let option = new RequestOptions({ headers: headers });
 
-    return this.http.post(`${this.baseUrl} ${this.roomReservationUrl}`, body, option)
+    return this.http.post(`${this.apiUrl} ${this.roomReservationUrl}`, body, option)
   }
 
   getAll(currentCheckInVal: string, currentCheckOutVal: string): Observable<Room[]> {
-    return this.http.get(`${this.baseUrl} ${this.roomReservationUrl} "?checkin=" ${currentCheckInVal} "&checkout=" ${currentCheckOutVal}`)
+    return this.http.get(`${this.apiUrl} ${this.roomReservationUrl} "?checkin=" ${currentCheckInVal} "&checkout=" ${currentCheckOutVal}`)
       .map(this.mapRoom);
   }
 
