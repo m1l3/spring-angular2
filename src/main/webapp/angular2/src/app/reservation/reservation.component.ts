@@ -26,6 +26,7 @@ export class ReservationComponent implements OnInit {
           .subscribe(
           room => {
             this.room = room;
+            console.log(room.id);
           },
           err => {
             console.log(err);

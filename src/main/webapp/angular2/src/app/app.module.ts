@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { LoggedInGuard, AlwaysAuthChildrenGuard } from 'app/guard';
 import { LoadReservationsService } from 'app/reservation/loadreservations.service';
+import { LockComponent } from './lock/lock.component';
+import { LockService } from 'app/lock/lock.service';
 
 
 
@@ -19,6 +21,7 @@ const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'home', redirectTo: '' },
   { path: 'main', component: AppComponent },
+  { path: 'lock', component: LockComponent },
   {
     path: 'roomlist', component: RoomlistComponent,
     canActivate: [LoggedInGuard],
@@ -31,7 +34,8 @@ const routes: Routes = [
     AppComponent,
     RoomlistComponent,
     HomeComponent,
-    ReservationComponent
+    ReservationComponent,
+    LockComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,7 @@ const routes: Routes = [
     { provide: 'API_URL', useValue: 'http://localhost:8080' },
     ReservationService,
     LoadReservationsService,
+    LockService,
     LoggedInGuard,
     AlwaysAuthChildrenGuard
   ],
