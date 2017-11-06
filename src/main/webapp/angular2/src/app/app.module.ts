@@ -14,6 +14,7 @@ import { LoggedInGuard, AlwaysAuthChildrenGuard } from 'app/guard';
 import { LoadReservationsService } from 'app/reservation/loadreservations.service';
 import { LockComponent } from './lock/lock.component';
 import { LockService } from 'app/lock/lock.service';
+import { RoomsResolve } from 'app/roomlist/rooms.resolve';
 
 
 
@@ -24,6 +25,9 @@ const routes: Routes = [
   { path: 'lock', component: LockComponent },
   {
     path: 'roomlist', component: RoomlistComponent,
+    resolve: {
+      rooms: RoomsResolve
+    },
     canActivate: [LoggedInGuard],
     canActivateChild: [AlwaysAuthChildrenGuard],
     children: [{ path: 'reservation/:id', component: ReservationComponent }]
@@ -50,7 +54,8 @@ const routes: Routes = [
     LoadReservationsService,
     LockService,
     LoggedInGuard,
-    AlwaysAuthChildrenGuard
+    AlwaysAuthChildrenGuard,
+    RoomsResolve
   ],
   bootstrap: [HomeComponent]
 })

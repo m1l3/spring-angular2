@@ -10,6 +10,7 @@ import { LoadReservationsService } from 'app/reservation/loadreservations.servic
   styleUrls: ['./roomlist.component.css']
 })
 export class RoomlistComponent implements OnInit {
+  showContent: boolean;
   rooms: RoomType[];
 
   constructor(private loadReservationsService: LoadReservationsService, private router: Router,private service: ReservationService, private route: ActivatedRoute) {
@@ -19,16 +20,7 @@ export class RoomlistComponent implements OnInit {
   ngOnInit() {
 
     console.log("ROOM LIST COMPONENT");
-
-    this.service.getAll("2017-05-05", "2017-05-05")
-      .subscribe(
-      rooms => {
-        this.rooms = rooms
-      },
-      err => {
-        console.log(err);
-      }
-      );
+    this.rooms = this.route.snapshot.data['rooms'];
   }
 
   viewReservations(id: number): void {
