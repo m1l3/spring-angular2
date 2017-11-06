@@ -1,3 +1,4 @@
+<h1>Reservations</h1>
 
 <div class="table-responsive">
   <table class="table" *ngIf="room">
@@ -14,21 +15,21 @@
       </tr>
     </tbody>
   </table>
-<br/>
+  <br/>
 
-<table class="table" *ngIf="room">
-  <tbody>
-    <tr *ngFor="let reservation of room.reservationEntityList">
-      <td>
-        <strong>Reservation id #: {{reservation.id}}</strong>
-        <br/>
-        <strong>Checkin: {{reservation.checkin | date: 'dd/MM/yyyy'}}</strong>
-        <br/>
-        <strong>Checkout: {{reservation.checkout | date: 'dd/MM/yyyy'}}</strong>
-        <br/>
-        <br/>
-    </tr>
-  </tbody>
-</table>
+  <table class="table" *ngIf="room">
+    <tbody>
+      <tr *ngFor="let reservation of room.reservationEntityList">
+        <td>
+          <strong>Reservation id #: {{reservation.id}}</strong>
+          <br/>
+          <strong>Checkin: {{reservation.checkin | date: 'dd/MM/yyyy'}}</strong>
+          <br/>
+          <strong>Checkout: {{reservation.checkout | date: 'dd/MM/yyyy'}}</strong>
+          <br/>
+          <br/>
+      </tr>
+    </tbody>
+  </table>
 
 </div>

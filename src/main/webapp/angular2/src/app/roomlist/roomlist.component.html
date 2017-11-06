@@ -1,6 +1,6 @@
 <h1>Available Room</h1>
 
-<div class="row" *ngIf="rooms">
+<div class="row" *ngIf="rooms" style="float:left">
   <div class="col-12">
     <div class="table-responsive">
       <table class="table">
@@ -23,7 +23,6 @@
   </div>
 </div>
 
-<h1>Reservations</h1>
-<div class="outer-outlet">
+<div class="outer-outlet" style="float:left; padding-left: 30px">
   <router-outlet></router-outlet>
 </div>
