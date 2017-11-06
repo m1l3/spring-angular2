@@ -1,0 +1,34 @@
+
+<div class="table-responsive">
+  <table class="table" *ngIf="room">
+    <tbody>
+      <tr>
+        <td>
+          <img src="src/app/images/intro_room.jpg" alt="Intro Gallery Room Sample Pictures">
+        </td>
+        <td>
+          <strong>Room #: {{room.roomNumber}}</strong>
+          <br/>
+          <strong>Price: {{room.price}}</strong>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<br/>
+
+<table class="table" *ngIf="room">
+  <tbody>
+    <tr *ngFor="let reservation of room.reservationEntityList">
+      <td>
+        <strong>Reservation id #: {{reservation.id}}</strong>
+        <br/>
+        <strong>Checkin: {{reservation.checkin | date: 'dd/MM/yyyy'}}</strong>
+        <br/>
+        <strong>Checkout: {{reservation.checkout | date: 'dd/MM/yyyy'}}</strong>
+        <br/>
+        <br/>
+    </tr>
+  </tbody>
+</table>
+
+</div>

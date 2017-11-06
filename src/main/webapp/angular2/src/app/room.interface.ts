@@ -1,4 +1,4 @@
-export interface Room {
+export interface RoomType {
     id: string;
     roomNumber: string;
     price: string;

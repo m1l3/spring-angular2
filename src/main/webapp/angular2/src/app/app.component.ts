@@ -6,7 +6,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import { ReservationService } from 'app/service';
 import { ReserveRoomRequest } from 'app/reserveRoom.model';
-import { Room } from 'app/room.interface';
+import { RoomType } from 'app/room.interface';
 import { Roomsearch } from 'app/roomSearch.interface';
 import { Router } from '@angular/router';
 
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   currenCheckOutVal: any;
   public submitted: boolean;
   roomsearch: FormGroup;
-  rooms: Room[];
+  rooms: RoomType[];
   currentCheckInVal: string;
   currentCheckOutVal: string;
 

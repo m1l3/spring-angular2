@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 import { ReservationService } from 'app/service';
 import { RoomlistComponent } from './roomlist/roomlist.component';
 import { HomeComponent } from './home/home.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { LoggedInGuard, AlwaysAuthChildrenGuard } from 'app/guard';
+import { LoadReservationsService } from 'app/reservation/loadreservations.service';
 
 
 
@@ -16,14 +19,19 @@ const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'home', redirectTo: '' },
   { path: 'main', component: AppComponent },
-  { path: 'roomlist', component: RoomlistComponent }
+  {
+    path: 'roomlist', component: RoomlistComponent,
+    canActivate: [LoggedInGuard],
+    canActivateChild: [AlwaysAuthChildrenGuard],
+    children: [{ path: 'reservation/:id', component: ReservationComponent }]
+  }
 ]
-
 @NgModule({
   declarations: [
     AppComponent,
     RoomlistComponent,
-    HomeComponent
+    HomeComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,10 @@ const routes: Routes = [
   ],
   providers: [
     { provide: 'API_URL', useValue: 'http://localhost:8080' },
-    ReservationService
+    ReservationService,
+    LoadReservationsService,
+    LoggedInGuard,
+    AlwaysAuthChildrenGuard
   ],
   bootstrap: [HomeComponent]
 })

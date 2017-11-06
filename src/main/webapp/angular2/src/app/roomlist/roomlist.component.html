@@ -13,13 +13,17 @@
               <strong>Room #: {{room.roomNumber}}</strong>
               <br/>
               <strong>Price: {{room.price}}</strong>
-            </td>
-            <td>
-              <button type="submit" class="btn btn-primary" (click)="reserveRoom(room.id)">Reserve</button>
+              <br/>
+              <strong (click)="viewReservations(room.id)">View Reservations</strong>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+</div>
+
+<h1>Reservations</h1>
+<div class="outer-outlet">
+  <router-outlet></router-outlet>
 </div>

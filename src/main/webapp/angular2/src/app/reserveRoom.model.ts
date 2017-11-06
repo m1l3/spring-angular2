@@ -10,3 +10,16 @@ export class ReserveRoomRequest {
       this.checkout = checkout;
     }
   }
+
+  
+export class ReserveRoomResponse {
+  id: string;
+  checkin: Date;
+  checkout: Date;
+
+  constructor(roomId: string, checkin: Date, checkout: Date) {
+    this.id = roomId;
+    this.checkin = checkin;
+    this.checkout = checkout;
+  }
+}
