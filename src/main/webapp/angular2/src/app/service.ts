@@ -40,7 +40,7 @@ export class ReservationService {
   //   return response.json().reservationEntityList;
   // }
 
-  getRoomById(roomId: number){
+  getRoomById(roomId: number): Observable<Room>{
     return this.http.get(`${this.apiUrl}${this.roomReservationUrl}/${roomId}`)
     .map(this.mapRoom);
   }

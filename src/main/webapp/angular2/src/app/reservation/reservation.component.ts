@@ -37,15 +37,7 @@ export class ReservationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getRoomById(this.id)
-      .subscribe(
-      room => {
-        this.room = room;
-      },
-      err => {
-        console.log(err);
-      }
-      );
+    this.room = this.route.snapshot.data['room'];
   }
 
 }

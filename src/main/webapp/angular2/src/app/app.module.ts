@@ -15,6 +15,7 @@ import { LoadReservationsService } from 'app/reservation/loadreservations.servic
 import { LockComponent } from './lock/lock.component';
 import { LockService } from 'app/lock/lock.service';
 import { RoomsResolve } from 'app/roomlist/rooms.resolve';
+import { ReservationsResolve } from 'app/reservation/reservations.resolve';
 
 
 
@@ -30,7 +31,9 @@ const routes: Routes = [
     },
     canActivate: [LoggedInGuard],
     canActivateChild: [AlwaysAuthChildrenGuard],
-    children: [{ path: 'reservation/:id', component: ReservationComponent }]
+    children: [{ path: 'reservation/:id', component: ReservationComponent, resolve: {
+      room: ReservationsResolve
+    }, }]
   }
 ]
 @NgModule({
@@ -55,7 +58,8 @@ const routes: Routes = [
     LockService,
     LoggedInGuard,
     AlwaysAuthChildrenGuard,
-    RoomsResolve
+    RoomsResolve,
+    ReservationsResolve
   ],
   bootstrap: [HomeComponent]
 })
